@@ -11,7 +11,7 @@ body, html {
     opacity: 0.75; 
 }
 
-#display {
+#game {
     border: 1px solid black;
     background-color: antiquewhite; 
     opacity: 0.80;  
@@ -21,8 +21,8 @@ body, html {
     left: 0;
     right: 0;
     margin: auto;
-    width: 800px;
-    height: 450px;
+    width: 900px;
+    height: 600px;
     text-align: center;
     font-family: 'Quattrocento', serif; 
     padding: 20px; 
@@ -53,5 +53,28 @@ p {
     color: black; 
     padding: 15px; 
     text-decoration: none; 
+}
+
+#gallows {
+    border: 1px solid black;
+    height: 75%;
+    padding-top: 60px;    
+    margin-top: 20px; 
+    float: left; 
+
+}
+
+#letters {
+    border: 1px solid black;  
+    height: 75%; 
+    margin-top: 20px; 
+    float: left; 
+}
+
+#score {
+    border: 1px solid black; 
+    clear: both; 
+    height: 20%;  
+
 }
 
