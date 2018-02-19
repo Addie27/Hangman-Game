@@ -1,9 +1,17 @@
 
 //Problem 1: Wins: set to 0 
+var wins = 0; 
 
 //Problem 2: Create answers
+var gods = ["Athena", "Demeter", "Aphrodite", "Artemis", "Poseidon", "Zeus", "Ares", "Hermes", "Apollo", "Hera", "Hephaestus", "Dionysus", "Hestia"]; 
 
 //Problem 3: Display 1 answer
+for (i=0; i<gods.length; i++){
+    var answer = gods[Math.floor(Math.random() * gods.length)];
+    //answer length
+    //display that amount of characters underlined
+    document.getElementById("answer").innerHTML = answer;
+}
 
 //Problem 4: User clicks letters
 
