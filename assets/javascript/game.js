@@ -3,18 +3,33 @@
 var wins = 0; 
 
 //Problem 2: Create answers
-var gods = ["Athena", "Demeter", "Aphrodite", "Artemis", "Poseidon", "Zeus", "Ares", "Hermes", "Apollo", "Hera", "Hephaestus", "Dionysus", "Hestia"]; 
+var gods = ["athena", "demeter", "aphrodite", "artemis", "poseidon", "zeus", "ares", "hermes", "apollo", "hera", "hephaestus", "dionysus", "hestia"]; 
 
 //Problem 3: Display 1 answer
-for (i=0; i<gods.length; i++){
-    var answer = gods[Math.floor(Math.random() * gods.length)];
+document.onkeyup=  function (event) {
+    for (i=0; i<gods.length; i++){
+        var word = gods[Math.floor(Math.random() * gods.length)];
     //answer length
-    //display that amount of characters underlined
-    document.getElementById("answer").innerHTML = answer;
-}
+    //display that amount of characters underlined 
+        
+        var answer = word.replace(/[a-z]/g, "_ ");
+        document.getElementById("answer").innerHTML = answer;
+    }
 
 //Problem 4: User clicks letters
-
+    document.onkeyup=  function (event) {
+        userLetter = event.key; 
+        for (j=0; j<answer.length; j++){
+            var letter = answer[j]; 
+            if (letter === userLetter){
+                answer.replace("_ ", userLetter); 
+            }
+            else {
+                document.getElementById("lettersused").innerHTML = userLetter;
+            }
+        }
+    }
+}; 
 //Problem 5: As user clicks, display letters either in answer or in letters used section
 
 //Problem 6: Number of guesses remaining 
