@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/game.css">
     <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
-    
+
     <title>Twelve Olympian Gods Hangman Game - Play!</title>
 </head>
+
 <body>
     <div class="container section">
         <div class="row" id="game">
             <div class="col-md-6" id="gallows">
-                <img src="assets/images/gallows.png" alt="greek gods"> 
-                <div><p>GALLOWS</p>
+                <img src="assets/images/gallows.png" alt="greek gods">
+                <div>
+                    <p>GALLOWS</p>
                 </div>
             </div>
             <div class="col-md-6" id="letters">
                 <div class="play">
                     <p class="press">PRESS ANY KEY TO GET STARTED!</p>
-                    <br/>
 
                     <p>GOD OR GODDESS:</p>
                     <div id="answer"></div>
-                    <br/>
-                    <br/>
-                    
-                    <p>WINS:</p>
-                    <div id="wins"></div>
-                    <br/>
-                    <br/>
-                    
+                    <br>
+
                     <p>GUESSES REMAINING:</p>
                     <div id="remaining"></div>
+                    <br>
+
+                    <p>WINS:</p>
+                    <div id="wins"></div>
+                    <br>
+
+                    <button id="reset">Start Over</button>
                 </div>
             </div>
             <div class="row" id="score">
-                    <div class="col-md-12">
-                        <p>LETTERS GUESSED:</p>
-                        <div id="lettersused"></div>
-                    </div>
+                <div class="col-md-12">
+                    <p>LETTERS GUESSED:</p>
+                    <div id="lettersused"></div>
+                </div>
             </div>
 
         </div>
-        
+
     </div>
-    
+
     <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
