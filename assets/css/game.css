@@ -73,9 +73,15 @@ p {
     border: 1px solid black; 
     clear: both; 
     height: 20%;  
-    width: 50%; 
+    width: 80%; 
     margin: auto; 
     font-size: 20px; 
 
+}
+
+#lettersused {
+    text-align: left; 
+    height: 65px;  
+    word-wrap: break-word; 
 }
 
