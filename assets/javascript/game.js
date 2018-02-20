@@ -1,111 +1,114 @@
-
-//Problem 1: Wins: set to 0 , Guesses remaining set to 20
+//Wins: set to 0 , Guesses set to 10;
 var wins = 0;
-var remainder = 6;
-//Problem 2: Create answers
+var remainder = 10;
+//Create answers
 var gods = ["athena", "demeter", "aphrodite", "artemis", "poseidon", "zeus", "ares", "hermes", "apollo", "hera", "hephaestus", "dionysus", "hestia"];
 var letters = ["abcdefghijklmnopqrstuvwxyz"];
 
-
+//Start over button. JS method. Make sure to add onClick="myFunction()" in html. 
 function startover() {
-    // document.getElementById("reset").reset();
     location.reload();
 }
 
-//Display the wins and remaining guesses left
-document.getElementById("remaining").innerHTML = remainder;
-document.getElementById("wins").innerHTML = wins;
+document.getElementById("remaining").innerHTML = remainder; //Initial display
+document.getElementById("wins").innerHTML = wins; //Initial display
 
-//To begin game, press any key. That will result in a random selection from the array. This word will then be taken and an array of its letters will be created. The underscore will then replace each of the letters. This will display on the screen. 
-document.onkeyup = function (event) {
-    var word = gods[Math.floor(Math.random() * gods.length)];
-    console.log(word);
-    var showHint = document.getElementById("hint")
+document.onkeyup = function (event) { //Press and key to get started
+    var word = gods[Math.floor(Math.random() * gods.length)]; //When key is pressed, this will initialize the random selection from my array of gods. 
+    console.log(word); //console.log this to check for bugs
+
+    lettersRemain = word.length; //set the letters remain to the word length 
+
+    var showHint = document.getElementById("hint")//show hints for whichever word is selected
 
     if (word === "athena") {
-        showHint.innerHTML = "The Warrior Goddess";
+        showHint.innerHTML = "The Warrior Goddess";//athena hint
     }
     if (word === "demeter") {
-        showHint.innerHTML = "Goddess of Harvest";
+        showHint.innerHTML = "Goddess of Harvest";//demeter hint
     }
     if (word === "aphrodite") {
-        showHint.innerHTML = "Goddess of Love";
+        showHint.innerHTML = "Goddess of Love";//aphrodite hint
     }
     if (word === "artemis") {
-        showHint.innerHTML = "Goddess of Wild Animals";
+        showHint.innerHTML = "Goddess of Wild Animals";//artemis hint
     }
     if (word === "poseidon") {
-        showHint.innerHTML = "God of the Sea";
+        showHint.innerHTML = "God of the Sea";//poseidon hint
     }
     if (word === "zeus") {
-        showHint.innerHTML = "God of the Sky";
+        showHint.innerHTML = "God of the Sky";//zeus hint
     }
     if (word === "ares") {
-        showHint.innerHTML = "God of War";
+        showHint.innerHTML = "God of War";//ares hint
     }
     if (word === "hermes") {
-        showHint.innerHTML = "Messenger of the Gods";
+        showHint.innerHTML = "Messenger of the Gods";//hermes hint
     }
     if (word === "apollo") {
-        showHint.innerHTML = "God of Music";
+        showHint.innerHTML = "God of Music";//apollo hint
     }
     if (word === "hera") {
-        showHint.innerHTML = "Goddess of Marriage";
+        showHint.innerHTML = "Goddess of Marriage";//hera hint
     }
     if (word === "hephaestus") {
-        showHint.innerHTML = "God of Fire";
+        showHint.innerHTML = "God of Fire";//hephaestus hint
     }
     if (word === "dionysus") {
-        showHint.innerHTML = "God of Wine";
+        showHint.innerHTML = "God of Wine";//dionysus hint
     }
     if (word === "hestia") {
-        showHint.innerHTML = "Goddess of the Family";
+        showHint.innerHTML = "Goddess of the Family";//hestia hint
     }
 
-    var ansArray = [];
-    for (var i = 0; i < word.length; i++) {
-        ansArray[i] = "_ ";
-        document.getElementById("answer").innerHTML = ansArray.join("");
-    }
-    //User guesses a letter, this letter is stored as userLetter. If the remainder of guesses is greater than zero, we enter the loop where we loop through the word. If the indexed letter equals the userLetter, that answer becomes the userletter and is pushed out to the html.     
 
-    document.onkeyup = function (event) {
-        userLetter = event.key;
+    var ansArray = [];//turns the word into an array
+    for (var i = 0; i < word.length; i++) {//loops through the array
+        ansArray[i] = "_ ";//replaces each letter with an underscore
+        document.getElementById("answer").innerHTML = ansArray.join("");//pushes this out to display and joins the underscores together without a comma      
+    }//closing of underscore loop 
 
-        for (var j = 0; j < word.length; j++) {
+    document.onkeyup = function (event) {//user presses key to guess a letter
+        userLetter = event.key;//the letter is stored in a variable 
 
-            if (word[j] === userLetter) {
-                ansArray[j] = userLetter;
-                document.getElementById("answer").innerHTML = ansArray.join("");
-            }
-            //Problem 5: As user clicks, display letters either in answer or in letters used section
+        for (var j = 0; j < word.length; j++) {//begin to loop through the word
 
+            if (word[j] === userLetter) {//if the index of the word letter is equal to the user guess
+                ansArray[j] = userLetter;//then the index of that letter becomes the user letter
+                document.getElementById("answer").innerHTML = ansArray.join("");//this is pushed out to the display
+                lettersRemain--; //letters remaining to be guessed in the word is decremented
+                if (lettersRemain <= 0){//if the letters remaining is less than or equal to zero
+                    alert("You win!"); //the you win alert will be prompted
+                    wins++; //wins will increase by 1
+                    document.getElementById("wins").innerHTML = wins;//and be updated on the screen
+                }//closing of my if letters remain statement
+            }//closing of the if statement to loop through the word and replace letters with userguess 
         } // closing of for loop
 
-        var lettersUsed = document.getElementById("lettersused");
-        var used = lettersUsed.innerHTML;
-        var usedArray = Array.from(used);
-        if (word.indexOf(userLetter) === -1 && usedArray.indexOf(userLetter) === -1) {
+        //After the userGuess is looped through the word
 
-            lettersUsed.insertAdjacentHTML("beforeend", userLetter + " ");
-            document.getElementById("remaining").innerHTML = remainder--;
+        var lettersUsed = document.getElementById("lettersused");//create a variable to grab the lettersused id
+        var used = lettersUsed.innerHTML;//create a variable that connects lettersused id and changing content of that id
+        var usedArray = Array.from(used);//usedArray creates an array of all the letters used
+
+        if (word.indexOf(userLetter) === -1 && usedArray.indexOf(userLetter) === -1) {//if the userLetter is not in the word, and it is not already in the letters used array
+            lettersUsed.insertAdjacentHTML("beforeend", userLetter + " ");//then the letter is inserted into the array
+            document.getElementById("remaining").innerHTML = remainder--;//and the remainder is decremented 
         }//closing of if statement for letters
-        if (remainder <= 0) {
-            document.getElementById("image").innerHTML = "<img src=assets/images/stickfigure.jpeg>";
+
+        if (remainder <= -1) {//if the remainder of tries falls below zero
+            document.getElementById("image").innerHTML = "<img src=assets/images/stickfigure.jpeg>";//the hangman image is dsiplayed 
         };//closing of if statement for you lose
 
     }; // closing of child function
 
-
-
 }; // closing of parent function
 
-    //Problem 7: Once all correct letters have been input, user wins and score increases
 
-    //Problem 8: If user gets uses all guesses remaining, user loses and hangman is displayed. Play again button? 
 
     //Problem 9: Game automatically chooses new answer and user plays again
     // }
+
 
 
 
