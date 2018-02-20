@@ -20,7 +20,9 @@
             <div class="col-md-6" id="gallows">
                 <img src="assets/images/gallows.png" alt="greek gods">
                 <div>
+                    <br/>
                     <p>GALLOWS</p>
+                    <div id="image"></div>
                 </div>
             </div>
             <div class="col-md-6" id="letters">
@@ -28,6 +30,7 @@
                     <p class="press">PRESS ANY KEY TO GET STARTED!</p>
 
                     <p>GOD OR GODDESS:</p>
+                    <div id="hint"></div>
                     <div id="answer"></div>
                     <br>
 
@@ -37,9 +40,8 @@
 
                     <p>WINS:</p>
                     <div id="wins"></div>
-                    <br>
 
-                    <button id="reset">Start Over</button>
+                    <button id="reset" onclick=startover()>Start Over</button>
                 </div>
             </div>
             <div class="row" id="score">
