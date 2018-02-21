@@ -1,9 +1,9 @@
 //Wins: set to 0 , Guesses set to 10;
 var wins = 0;
-var remainder = 15;
+var remainder = 12;
+var winsTrack = ""; 
 //Create answers
 var gods = ["athena", "demeter", "aphrodite", "artemis", "poseidon", "zeus", "ares", "hermes", "apollo", "hera", "hephaestus", "dionysus", "hestia"];
-var letters = ["abcdefghijklmnopqrstuvwxyz"];
 
 //Start over button. JS method. Make sure to add onClick="myFunction()" in html. 
 function startover() {
@@ -11,7 +11,7 @@ function startover() {
 }
 
 document.getElementById("remaining").innerHTML = remainder; //Initial display
-document.getElementById("wins").innerHTML = wins; //Initial display
+document.getElementById("wins").innerHTML = sessionStorage.getItem(winsTrack); //Initial display
 
 document.onkeyup = function (event) { //Press and key to get started
     var word = gods[Math.floor(Math.random() * gods.length)]; //When key is pressed, this will initialize the random selection from my array of gods. 
@@ -80,10 +80,11 @@ document.onkeyup = function (event) { //Press and key to get started
                 if (lettersRemain <= 0){//if the letters remaining is less than or equal to zero
                     document.getElementById("image1").innerHTML = "<img src=assets/images/youwin.png>"; //this image will appear when you win
                     wins++; //wins will increase by 1
-                    document.getElementById("wins").innerHTML = wins;//and be updated on the screen    
-                    document.onkeyup = function (event) {//restarts game
-                        location.reload(true); 
-                    }
+                    sessionStorage.setItem(winsTrack, wins); //setting winsTrack to equal my wins data
+                    document.getElementById("wins").innerHTML = wins++;//wins will be updated on the screen    
+                    document.onkeyup = function (event) {//restarts game  
+                        location.reload(); 
+                    }//closing of restart game function 
                 }//closing of my if letters remain statement
             }//closing of the if statement to loop through the word and replace letters with userguess 
         } // closing of for loop
@@ -102,7 +103,7 @@ document.onkeyup = function (event) { //Press and key to get started
         if (remainder <= -1) {//if the remainder of tries falls below zero
             document.getElementById("image2").innerHTML = "<img src=assets/images/stickfigure.jpeg>";//the hangman image is dsiplayed 
             document.onkeyup = function (event) {//restarts game
-                location.reload(true); 
+                location.reload(); 
             }
         };//closing of if statement for you lose
 
