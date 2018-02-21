@@ -1,6 +1,6 @@
 //Wins: set to 0 , Guesses set to 10;
 var wins = 0;
-var remainder = 10;
+var remainder = 15;
 //Create answers
 var gods = ["athena", "demeter", "aphrodite", "artemis", "poseidon", "zeus", "ares", "hermes", "apollo", "hera", "hephaestus", "dionysus", "hestia"];
 var letters = ["abcdefghijklmnopqrstuvwxyz"];
@@ -78,9 +78,12 @@ document.onkeyup = function (event) { //Press and key to get started
                 document.getElementById("answer").innerHTML = ansArray.join("");//this is pushed out to the display
                 lettersRemain--; //letters remaining to be guessed in the word is decremented
                 if (lettersRemain <= 0){//if the letters remaining is less than or equal to zero
-                    alert("You win!"); //the you win alert will be prompted
+                    document.getElementById("image1").innerHTML = "<img src=assets/images/youwin.png>"; //this image will appear when you win
                     wins++; //wins will increase by 1
-                    document.getElementById("wins").innerHTML = wins;//and be updated on the screen
+                    document.getElementById("wins").innerHTML = wins;//and be updated on the screen    
+                    document.onkeyup = function (event) {//restarts game
+                        location.reload(true); 
+                    }
                 }//closing of my if letters remain statement
             }//closing of the if statement to loop through the word and replace letters with userguess 
         } // closing of for loop
@@ -97,7 +100,10 @@ document.onkeyup = function (event) { //Press and key to get started
         }//closing of if statement for letters
 
         if (remainder <= -1) {//if the remainder of tries falls below zero
-            document.getElementById("image").innerHTML = "<img src=assets/images/stickfigure.jpeg>";//the hangman image is dsiplayed 
+            document.getElementById("image2").innerHTML = "<img src=assets/images/stickfigure.jpeg>";//the hangman image is dsiplayed 
+            document.onkeyup = function (event) {//restarts game
+                location.reload(); 
+            }
         };//closing of if statement for you lose
 
     }; // closing of child function
@@ -106,8 +112,7 @@ document.onkeyup = function (event) { //Press and key to get started
 
 
 
-    //Problem 9: Game automatically chooses new answer and user plays again
-    // }
+
 
 
 

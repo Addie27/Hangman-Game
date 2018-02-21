@@ -86,11 +86,17 @@ p {
     word-wrap: break-word; 
 }
 
-#image {
+#image2 {
     position:absolute; 
     top: 60px;
     right: 140px; 
     background-color: antiquewhite; 
     
+}
+
+#image1 {
+    position: absolute;
+    top: 60px;
+    right: 60px; 
 }
 
