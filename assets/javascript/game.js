@@ -73,7 +73,7 @@ document.onkeyup = function (event) { //Press and key to get started
 
         for (var j = 0; j < word.length; j++) {//begin to loop through the word
 
-            if (word[j] === userLetter) {//if the index of the word letter is equal to the user guess
+            if (word[j] === userLetter && userLetter !== ansArray[j]) {//if the index of the word letter is equal to the user guess
                 ansArray[j] = userLetter;//then the index of that letter becomes the user letter
                 document.getElementById("answer").innerHTML = ansArray.join("");//this is pushed out to the display
                 lettersRemain--; //letters remaining to be guessed in the word is decremented
@@ -102,7 +102,7 @@ document.onkeyup = function (event) { //Press and key to get started
         if (remainder <= -1) {//if the remainder of tries falls below zero
             document.getElementById("image2").innerHTML = "<img src=assets/images/stickfigure.jpeg>";//the hangman image is dsiplayed 
             document.onkeyup = function (event) {//restarts game
-                location.reload(); 
+                location.reload(true); 
             }
         };//closing of if statement for you lose
 
@@ -113,7 +113,7 @@ document.onkeyup = function (event) { //Press and key to get started
 
 
 
-
+//issues that need to be resolved: tracking wins 
 
 
 
